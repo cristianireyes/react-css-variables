@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThemeToggleButton renders correctly 1`] = `
+<label
+  aria-label="Activate light mode"
+  className="container"
+  title="Activate light mode"
+>
+  <input
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <div />
+</label>
+`;

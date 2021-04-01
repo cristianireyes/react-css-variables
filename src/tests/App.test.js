@@ -8,12 +8,3 @@ describe("When the theme is Dark", () => {
     expect(getByText(/Dark theme/i)).toBeInTheDocument();
   });
 });
-
-describe("when toggling the theme", () => {
-  it("should update theme", () => {
-    const { getByText } = render(<App />);
-    const button = getByText(/Toggle theme/i);
-    button.click();
-    expect(getByText("Light theme")).toBeInTheDocument();
-  });
-});
