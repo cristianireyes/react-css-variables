@@ -1,0 +1,11 @@
+:root {
+  --color-surface: #0e141b;
+  --color-primary: #c552ff;
+  --color-text: #ffffff;
+}
+html {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: sans-serif, system-ui;
+  text-align: center;
+}
