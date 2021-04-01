@@ -1,29 +1,36 @@
 import React, { useState } from 'react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import './styles/App.css';
 
-import ThemeToggleButton from 'components/ThemeToggleButton';
-
-import { applyTheme, getNextTheme, ThemeType } from './utils/ThemeProvider'
+import { applyTheme, getNewTheme, ThemeType } from './utils/ThemeProvider'
+import { ThemeToggleButton } from 'components';
 
 const App = () => {
   const [currentTheme, setTheme] = useState(ThemeType.DARK);
   const [isDark, setIsDark] = useState(true);
 
   const onToggle = () => {
-    const nextTheme = getNextTheme(currentTheme);
-    applyTheme(nextTheme, () => {
-      setTheme(nextTheme);
+    const newTheme = getNewTheme(currentTheme);
+    applyTheme(newTheme, () => {
+      setTheme(newTheme);
       setIsDark(prevIsDark => !prevIsDark);
     });
   };
 
   return (
-    <div className="container">
-      <ThemeToggleButton isDark={isDark} onChange={onToggle} />
-      <h1>
-        {isDark ? "Dark theme" : "Light theme" }
-      </h1>
-    </div>
+    <HelmetProvider>
+      <Helmet>
+        <title>
+          React | Css Variables
+        </title>
+      </Helmet>
+      <div className="app">
+        <ThemeToggleButton isDark={isDark} onChange={onToggle} />
+        <h1>
+          {isDark ? "Dark Theme" : "Light Theme" }
+        </h1>
+      </div>
+    </HelmetProvider>
   );
 };
 

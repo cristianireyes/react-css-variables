@@ -7,28 +7,29 @@ const darkTheme = {
   "--color-text": "bisque",
 };
 
-const isDark = (theme) => {
-  return theme === ThemeType.DARK;
-}
+const isDark = (theme) => (
+  theme === ThemeType.DARK
+)
 
 export const ThemeType = {
   LIGHT: 'light',
   DARK: 'dark',
 }
 
-export const getNextTheme = (currentTheme) => {
+export const getNewTheme = (currentTheme) => {
   return isDark(currentTheme)
     ? ThemeType.LIGHT
     : ThemeType.DARK;
 }
 
-export const applyTheme = (nextTheme, cb) => {
-  const theme = isDark(nextTheme)
+export const applyTheme = (newTheme, next) => {
+  const theme = isDark(newTheme)
     ? darkTheme
     : lightTheme;
-  Object.keys(theme).map(key => {
+
+  Object.keys(theme).forEach(key => {
     const value = theme[key];
     document.documentElement.style.setProperty(key, value);
   });
-  cb();
+  next();
 }
