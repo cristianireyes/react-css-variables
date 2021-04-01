@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import './styles/App.css';
 
 import { applyTheme, getNewTheme, ThemeType } from './utils/ThemeProvider'
@@ -18,19 +17,14 @@ const App = () => {
   };
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>
-          React | Css Variables
-        </title>
-      </Helmet>
+    <>
       <div className="app">
         <ThemeToggleButton isDark={isDark} onChange={onToggle} />
         <h1>
           {isDark ? "Dark Theme" : "Light Theme" }
         </h1>
       </div>
-    </HelmetProvider>
+    </>
   );
 };
 
